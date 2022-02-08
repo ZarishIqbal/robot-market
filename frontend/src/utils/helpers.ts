@@ -15,3 +15,10 @@ export const processData = (robots: any[]): Robots => {
 		}
 	}, {} as Robots)
 }
+
+export const formatPrice = (price: number) => {
+	return price.toLocaleString('th-TH', {
+		style: 'currency',
+		currency: 'THB'
+	})
+}

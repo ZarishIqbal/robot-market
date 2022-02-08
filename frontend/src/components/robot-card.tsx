@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { DateTime } from 'luxon'
 import React from 'react'
+import { formatPrice } from 'utils/helpers'
 
 interface RobotCardProps {
 	robot: AugmentedRobot
@@ -18,7 +19,7 @@ const RobotCard = ({ robot, addToCart }: RobotCardProps) => {
 			<div className="my-2">
 				<div className="flex justify-between">
 					<p>Price:</p>
-					<p>{price.toLocaleString('en-US', { style: 'currency', currency: 'THB' })}</p>
+					<p>{formatPrice(price)}</p>
 				</div>
 				<div
 					className={clsx(
@@ -34,7 +35,7 @@ const RobotCard = ({ robot, addToCart }: RobotCardProps) => {
 				</div>
 				<div className="flex justify-between">
 					<p>Created on:</p>
-					<p> {DateTime.fromISO(createdAt).toFormat('DD-mm-yyyy')}</p>
+					<p> {DateTime.fromISO(createdAt).toFormat('dd-LL-yyyy')}</p>
 				</div>
 				<motion.button
 					whileHover={{ scale: 1.2 }}
