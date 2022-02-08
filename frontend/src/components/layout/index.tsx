@@ -5,13 +5,14 @@ import AppHeader from './app-header'
 interface AppLayoutProps {
 	children: React.ReactNode
 	title?: string
+	toggleCart: () => void
 }
-const DefaultLayout = ({ title, children }: AppLayoutProps) => {
+const DefaultLayout = ({ title, toggleCart, children }: AppLayoutProps) => {
 	const docTitle = title ? `${title} | Robo Market` : 'Robo Market'
 	useDocumentTitle(docTitle)
 	return (
 		<div className="w-full text-gray-700">
-			<AppHeader title={docTitle} />
+			<AppHeader toggleCart={toggleCart} title={docTitle} />
 			{children}
 		</div>
 	)

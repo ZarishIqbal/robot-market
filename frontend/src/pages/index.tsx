@@ -11,7 +11,7 @@ const App = () => {
 	const removeFromCart = (id: string) => {}
 
 	return (
-		<DefaultLayout>
+		<DefaultLayout toggleCart={() => console.log('toggle')}>
 			<ProductList robots={Object.values(robots ?? {})} addToCart={addToCart} />
 		</DefaultLayout>
 	)
