@@ -8,29 +8,39 @@ interface CartProps {
 	removeFromCart: (id: string) => void
 }
 const Cart = ({ robots, addToCart, removeFromCart }: CartProps) => {
-	const getTotal = () => {
+	const getTotalPrice = () => {
 		const totalPrice = Object.values(robots ?? {}).reduce(
 			(acc, curr) => acc + curr.price * curr.quantity,
 			0
 		)
 		return totalPrice
 	}
+	const getTotalQuantity = () => {
+		const totalQuantity = Object.values(robots ?? {}).reduce(
+			(acc, curr) => acc + curr.quantity,
+			0
+		)
+		return totalQuantity
+	}
 	return (
-		<div className="fixed pb-20 top-0 right-0 h-full w-1/3 z-40 bg-gray-50 p-2 pt-10 overflow-y-scroll space-y-5 border border-gray-100 shadow-lg">
-			<h3 className="font-bold text-2xl">Your shopping cart</h3>
+		<div className="fixed pb-20 top-0 right-0 h-full w-96 z-40 bg-gray-100 p-2 pt-10 overflow-y-scroll space-y-5 border border-gray-200 shadow-xl">
 			{Object.values(robots ?? {}).map((robot, index) => (
-				<div key={robot.id} className="flex items-center">
-					<p className="flex justify-center items-center w-8 h-8 m-2 border border-gray-600 shadow-lg rounded-md">
-						{index + 1}
-					</p>
-
-					<CartItem robot={robot} addToCart={addToCart} removeFromCart={removeFromCart} />
-				</div>
+				<CartItem
+					key={robot.id}
+					robot={robot}
+					addToCart={addToCart}
+					removeFromCart={removeFromCart}
+				/>
 			))}
-			{getTotal() > 0 && (
-				<p className="font-semibold text-teal-brand text-lg">
-					Grand Total: {formatPrice(getTotal())}
-				</p>
+			{getTotalPrice() > 0 && (
+				<div>
+					<h2 className="text-black font-semibold">Order Summary</h2>
+					<p>Items: {getTotalQuantity()}</p>
+					<div className="flex justify-between items-center mt-2">
+						<p>Total: </p>
+						<span className="text-teal-brand">{formatPrice(getTotalPrice())}</span>
+					</div>
+				</div>
 			)}
 		</div>
 	)
