@@ -5,12 +5,19 @@ import ProductList from './product'
 import useComponentVisible from 'hooks/useComponentVisible'
 import Cart from './cart'
 import toast from 'react-hot-toast'
+import Checkbox from 'components/checkbox'
 
 const App = () => {
 	const { robots } = useAPIData()
 
 	const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false)
 	const [cartItems, setCartItems] = React.useState<Robots>({})
+
+	const [filter, setFilter] = React.useState<string[]>([])
+
+	const materials = Object.values(robots).reduce((accumalator, robot) => {
+		return accumalator.includes(robot.material) ? accumalator : [...accumalator, robot.material]
+	}, [] as string[])
 
 	const addToCart = (id: string) => {
 		const selectedRobot = robots[id]
@@ -60,10 +67,39 @@ const App = () => {
 		})
 	}
 
+	const handleCheck = (material: string) => {
+		setFilter(prev => {
+			if (prev.includes(material)) {
+				return [...prev.filter(item => item !== material)]
+			}
+			return [...prev, material]
+		})
+	}
+	const applyFilter = (robot: AugmentedRobot) => {
+		return filter.length === 0 || filter.includes(robot.material)
+	}
 	return (
 		<DefaultLayout toggleCart={() => setIsComponentVisible(!isComponentVisible)}>
 			<div ref={ref} className="w-full h-full z-50">
-				<ProductList robots={Object.values(robots ?? {})} addToCart={addToCart} />
+				<div className="flex my-5 mx-2 flex-wrap justify-center">
+					{materials.map(material => (
+						<Checkbox
+							key={material}
+							checked={filter.includes(material)}
+							value={material}
+							handleCheck={material => handleCheck(material)}
+						/>
+					))}
+				</div>
+				<button
+					onClick={() => setFilter([])}
+					className="text-teal-brand bg-gray-200 justify-center items-center font-semibold rounded-md mx-5 w-36 h-8 mt-2">
+					Clear Filter
+				</button>
+				<ProductList
+					robots={Object.values(robots ?? {}).filter(applyFilter)}
+					addToCart={addToCart}
+				/>
 			</div>
 			{isComponentVisible && (
 				<Cart addToCart={addToCart} robots={cartItems} removeFromCart={removeFromCart} />
