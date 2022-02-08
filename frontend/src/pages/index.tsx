@@ -102,7 +102,12 @@ const App = () => {
 				/>
 			</div>
 			{isComponentVisible && (
-				<Cart addToCart={addToCart} robots={cartItems} removeFromCart={removeFromCart} />
+				<Cart
+					addToCart={addToCart}
+					robots={cartItems}
+					removeFromCart={removeFromCart}
+					closeCart={() => setIsComponentVisible(false)}
+				/>
 			)}
 		</DefaultLayout>
 	)
