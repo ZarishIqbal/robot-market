@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Toaster } from 'react-hot-toast'
+import Routing from 'routing'
 import App from './pages'
 import './styles/main.css'
 
@@ -19,7 +20,7 @@ ReactDOM.render(
 				duration: 3000
 			}}
 		/>
-		<App />
+		<Routing />
 	</React.StrictMode>,
 	document.getElementById('root')
 )
