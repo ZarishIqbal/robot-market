@@ -1,12 +1,20 @@
-import * as React from "react";
+import * as React from 'react'
+import DefaultLayout from '../components/layout'
+import useAPIData from 'hooks/useApiData'
+import ProductList from './product'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Robot Market</h1>
-      {/*Add your code here*/}
-    </div>
-  );
+const App = () => {
+	const { robots } = useAPIData()
+
+	const [cartItems, setCartItems] = React.useState<Robots>()
+	const addToCart = (id: string) => {}
+	const removeFromCart = (id: string) => {}
+
+	return (
+		<DefaultLayout>
+			<ProductList robots={Object.values(robots ?? {})} addToCart={addToCart} />
+		</DefaultLayout>
+	)
 }
 
-export default App;
+export default App
