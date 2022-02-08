@@ -29,7 +29,10 @@ module.exports = {
       orange: colors.orange,
     },
     extend: {
-      colors: {},
+      colors: {
+        "red-brand": "#FC6171",
+        "teal-brand": "#1bb4bb",
+      },
       screens: {
         print: { raw: "print" },
       },
