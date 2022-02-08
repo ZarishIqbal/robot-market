@@ -6,6 +6,10 @@ interface Robot {
 	createdAt: string
 	material: string
 }
+interface AugmentedRobot extends Robot {
+	id: string
+	quantity: number
+}
 interface Robots {
-	[id: string]: Robot & { id: string; quantity: number }
+	[id: string]: AugmentedRobot
 }
