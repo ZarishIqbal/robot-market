@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,11 +19,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
-    "paths": {
-      "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"]
-    }
+    "baseUrl": "src"
   },
-  "include": ["src", "src/types/typings.d.ts"]
+  "include": [
+    "src",
+    "src/types/typings.d.ts"
+  ]
 }
