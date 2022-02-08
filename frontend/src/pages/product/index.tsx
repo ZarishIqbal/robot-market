@@ -7,7 +7,7 @@ interface ProductListProps {
 }
 const ProductList = ({ robots, addToCart }: ProductListProps) => {
 	const renderItem = (robot: AugmentedRobot) => {
-		return <RobotCard addToCart={addToCart} robot={robot} />
+		return <RobotCard key={robot.id} addToCart={addToCart} robot={robot} />
 	}
 
 	return <div className="flex flex-wrap">{robots.map(renderItem)}</div>
