@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "name": "Marlene Lueilwitz",
+            "image": "https://robohash.org/Marlene Lueilwitz.png?size=120x120",
+            "price": "793.77",
+            "stock": 8,
+            "createdAt": "2022-01-13T22:51:32.365Z",
+            "material": "Concrete"
+        },
+        {
+            "name": "Kathleen Franecki",
+            "image": "https://robohash.org/Kathleen Franecki.png?size=120x120",
+            "price": "259.14",
+            "stock": 4,
+            "createdAt": "2021-09-12T15:09:46.406Z",
+            "material": "Concrete"
+        },
+        {
+            "name": "Hubert Turcotte",
+            "image": "https://robohash.org/Hubert Turcotte.png?size=120x120",
+            "price": "485.72",
+            "stock": 5,
+            "createdAt": "2022-01-31T04:33:07.594Z",
+            "material": "Metal"
+        },
+        {
+            "name": "Sunny Runolfsson",
+            "image": "https://robohash.org/Sunny Runolfsson.png?size=120x120",
+            "price": "724.38",
+            "stock": 9,
+            "createdAt": "2021-12-20T00:25:42.306Z",
+            "material": "Granite"
+        }
+    ]
+}

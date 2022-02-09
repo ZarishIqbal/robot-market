@@ -11,7 +11,7 @@ const DefaultLayout = ({ title, toggleCart, children }: AppLayoutProps) => {
 	const docTitle = title ? `${title} | Robo Market` : 'Robo Market'
 	useDocumentTitle(docTitle)
 	return (
-		<div className="w-full text-gray-700">
+		<div data-testid="app-layout" className="w-full text-gray-700">
 			<AppHeader toggleCart={toggleCart} title={docTitle} />
 			{children}
 		</div>

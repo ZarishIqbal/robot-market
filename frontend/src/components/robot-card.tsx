@@ -10,16 +10,18 @@ interface RobotCardProps {
 }
 
 const RobotCard = ({ robot, addToCart }: RobotCardProps) => {
-	const { id, name, image, price, stock, material, createdAt, quantity } = robot
+	const { id, name, image, price, stock, material, createdAt } = robot
 	const inStock = stock > 1
 	return (
-		<div className="p-5 text-left text-gray-500 font-medium flex-col mx-5 my-5 w-80 h-80 rounded-md shadow-md bg-gray-50 border border-gray-300 justify-center flex">
+		<div
+			data-testid={`robot-card-${id}`}
+			className="p-5 text-left text-gray-500 font-medium flex-col mx-5 my-5 w-80 h-80 rounded-md shadow-md bg-gray-50 border border-gray-300 justify-center flex">
 			<img className="w-20 h-20 m-auto" src={image} />
 			<p className="text-2xl font-semibold text-teal-brand text-center">{name}</p>
 			<div className="my-2">
 				<div className="flex justify-between">
 					<p>Price:</p>
-					<p>{formatPrice(price)}</p>
+					<p data-testid={`robot-price-${id}`}>{formatPrice(price)}</p>
 				</div>
 				<div
 					className={clsx(
@@ -35,7 +37,9 @@ const RobotCard = ({ robot, addToCart }: RobotCardProps) => {
 				</div>
 				<div className="flex justify-between">
 					<p>Created on:</p>
-					<p> {DateTime.fromISO(createdAt).toFormat('dd-LL-yyyy')}</p>
+					<p data-testid={`robot-createdAt-${id}`}>
+						{DateTime.fromISO(createdAt).toFormat('dd-LL-yyyy')}
+					</p>
 				</div>
 				<motion.button
 					whileHover={{ scale: 1.2 }}
